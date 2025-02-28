@@ -1,101 +1,142 @@
-import Image from "next/image";
+import { Box, Flex, Text, Button, Link, HStack } from "@chakra-ui/react";
+import { ReactNode } from "react";
+import Footer from "./components/footer";
+
+const NavLink = ({ href, children }: { href: string; children: ReactNode }) => (
+  <Link
+    href={href}
+    fontSize="lg"
+    px="8"
+    py="3"
+    rounded="lg"
+    bg="transparent"
+    transition="all 0.3s ease"
+    _hover={{
+      transform: "scale(1.1)",
+      boxShadow: "lg",
+    }}
+  >
+    {children}
+  </Link>
+);
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <Box position="absolute" w="100vw" minH="100vh">
+      {/* ✅ 背景圖片放在最底層 (zIndex -1) */}
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        w="100%"
+        h="100vh"
+        bgImage="url('/image.png')"
+        bgSize="cover"
+        bgPos="center"
+        bgRepeat="no-repeat"
+        zIndex="0"
+        filter={"opacity(0.5)"}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <Flex
+        as="nav"
+        position="fixed"
+        top="0"
+        left="0"
+        w="100vw"
+        p="4"
+        justify="space-between"
+        align="center"
+        backdropFilter="blur(10px)"
+        zIndex="1000"
+      >
+        {/* 添加 maxW 讓內容內縮 */}
+        <Flex
+          w="100%"
+          maxW="1200px"
+          mx="auto"
+          justify="space-between"
+          align="center"
+        >
+          <Text fontSize="3xl" fontWeight="bold">
+            <Text as="span" color="purple.500">
+              T
+            </Text>
+            <Text as="span" color="red.500">
+              Y
+            </Text>
+            Stream
+          </Text>
+
+          <HStack gap="4">
+            <NavLink key="服務條款" href="/tos">
+              服務條款
+            </NavLink>
+            <NavLink key="隱私條款" href="/privacy">
+              隱私條款
+            </NavLink>
+          </HStack>
+        </Flex>
+      </Flex>
+
+      {/* ✅ 確保內容層 zIndex 為 1，確保它在背景上方 */}
+      <Flex
+        position="relative"
+        flexDir="column"
+        justify="center"
+        align="center"
+        h="100vh"
+        px="10"
+        maxW="1200px"
+        mx="auto"
+        zIndex="1"
+      >
+        <Text fontSize="5xl" fontWeight="bold" color="white">
+          <Text as="span" color="purple.700">
+            T
+          </Text>
+          <Text as="span" color="red.700">
+            Y
+          </Text>
+          Stream
+        </Text>
+        <Text mt="4" fontSize="lg" color="gray.200" textAlign="center">
+          一台全中文的 Discord 機器人，專為即時的 Twitch & YouTube
+          直播通知而設計，讓你的社群不再錯過任何精彩直播！
+        </Text>
+        <HStack mt="6" gap="4">
+          <Button
+            background="linear-gradient(to right, red, purple)" // 確保按鈕預設背景是漸層
+            px="6"
+            py="3"
+            rounded="lg"
+            fontWeight="semibold"
+            boxShadow="lg"
+            transition="all 0.3s ease"
+            _hover={{
+              background: "linear-gradient(to right, red, purple)", // Hover 時顯示不同漸層
+              transform: "scale(1.05)",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            邀請 →
+          </Button>
+
+          <Button
+            bg="#5865F2"
+            color="black"
+            px="6"
+            py="3"
+            rounded="lg"
+            fontWeight="semibold"
+            boxShadow="lg"
+            transition="all 0.3s ease"
+            _hover={{ transform: "scale(1.05)" }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            支援群組
+          </Button>
+        </HStack>
+      </Flex>
+      <Footer />
+    </Box>
   );
 }
