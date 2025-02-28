@@ -22,13 +22,14 @@ const NavLink = ({ href, children }: { href: string; children: ReactNode }) => (
 
 export default function Home() {
   return (
-    <Box position="absolute" w="100vw" minH="100vh">
+    <Box position="absolute" w="100vw" minH="100vh" overflowX="hidden">
       {/* ✅ 背景圖片放在最底層 (zIndex -1) */}
       <Box
         position="absolute"
         top="0"
         left="0"
         w="100%"
+        minW={"full"}
         h="100vh"
         bgImage="url('/image.png')"
         bgSize="cover"
