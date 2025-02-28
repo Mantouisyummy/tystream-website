@@ -106,7 +106,9 @@ export default function Home() {
         </Text>
         <HStack mt="6" gap="4">
           <Button
-            background="linear-gradient(to right, red, purple)" // 確保按鈕預設背景是漸層
+            asChild
+            rel="noopener noreferrer"
+            background="linear-gradient(to right, red, purple)"
             px="6"
             py="3"
             rounded="lg"
@@ -114,11 +116,13 @@ export default function Home() {
             boxShadow="lg"
             transition="all 0.3s ease"
             _hover={{
-              background: "linear-gradient(to right, red, purple)", // Hover 時顯示不同漸層
+              background: "linear-gradient(to right, red, purple)",
               transform: "scale(1.05)",
             }}
           >
-            邀請 →
+            <a href="https://discord.com/oauth2/authorize?client_id=1267467138839613553">
+              邀請 →
+            </a>
           </Button>
 
           <Button

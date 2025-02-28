@@ -61,7 +61,7 @@ export default function TermsOfService() {
             </Text>
             <Box as="ul" pl={5} color="gray.400">
               <li>
-                Follow Discord's{" "}
+                Follow Discord&apos;s{" "}
                 <Link href="https://discord.com/terms" color="blue.500">
                   Terms of Service
                 </Link>
