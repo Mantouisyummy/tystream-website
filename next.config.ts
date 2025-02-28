@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
     };
 
     config.experiments = {
+      layers: true,
       cacheUnaffected: true, // 減少不必要的快取影響
     };
 
