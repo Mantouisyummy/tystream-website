@@ -127,6 +127,7 @@ export default function Home() {
           </Button>
 
           <Button
+            asChild
             bg="#5865F2"
             color="black"
             px="6"
@@ -137,7 +138,7 @@ export default function Home() {
             transition="all 0.3s ease"
             _hover={{ transform: "scale(1.05)" }}
           >
-            支援群組
+            <a href="https://discord.gg/KeXM5dmqK2">支援群組</a>
           </Button>
         </HStack>
       </Flex>
